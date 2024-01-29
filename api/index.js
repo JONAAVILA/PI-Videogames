@@ -1,13 +1,16 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const VideogamesToDb = require('./src/services/videogamesToDb.js')
+const {VideogamesToDb} = require('./src/services/videogamesToDb.js')
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
-  server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
-  });
-  VideogamesToDb()
-});
 
+const startServer = async ()=>{
+    await conn.sync({ force: true })
+    server.listen(3001,() => {
+      console.log('%s listening at 3001')
+    });
+    VideogamesToDb()
+  }
+
+startServer();
 

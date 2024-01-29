@@ -1,27 +1,30 @@
 const axios = require('axios');
-const { API_KEY } = process.env;
+const { APY_KEY } = process.env;
 const { Videogame } = require('../db');
 
 const VideogamesToDb = async ()=>{
     try {
-        const response = await axios(`https://api.rawg.io/api/games?key=${API_KEY}`)
-        if(response === undefined) throw new Error(response)
+        const response = await axios(`https://api.rawg.io/api/games?key=${APY_KEY}`)
+    
+        if(response === undefined ) throw new Error(response)
         
-        const apiData = response.data?.map( async element => {
-            await Videogame.findOrCreate({
+        const apiData = response.data.results?.map( async element => {
+            await Videogame.create({
                 where:{
-                    name: element.results['name'],
+                    name: element.name === undefined ? name: 'no name',
                 },
-                row: false
             })
 
             await Promise.all(apiData)
             return apiData
         })
+        console.log(apiData)
     } catch (error) {
         return {error: error.message}
     }
 
 }
 
-module.exports = VideogamesToDb;
+module.exports = {
+    VideogamesToDb
+};
