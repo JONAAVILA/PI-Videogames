@@ -6,20 +6,24 @@ const VideogamesToDb = async ()=>{
     try {
         const response = await axios(`https://api.rawg.io/api/games?key=${APY_KEY}`)
     
-        if(response === undefined ) throw new Error(response)
+        if(!response.data ) throw new Error(response)
         
         const apiData = response.data.results?.map( async element => {
-            await Videogame.create({
+            await Videogame.findOrCreate({
                 where:{
-                    name: element.name === undefined ? name: 'no name',
+                    name: element.name,
+                    description: element.platforms[0].requirements_en['minimum'] !== null? element.platforms[0].requirements_en['minimum']: "description not found",
+                    platform: element.platforms[0].name,
+                    image: element.platforms[0].image_background,
+                    date: element.released,
+                    rating: element.rating
                 },
             })
-
             await Promise.all(apiData)
             return apiData
         })
-        console.log(apiData)
     } catch (error) {
+
         return {error: error.message}
     }
 
