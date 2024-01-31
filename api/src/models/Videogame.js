@@ -6,13 +6,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     platform: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.ARRAY(DataTypes.STRING),
     },
     image: {
       type: DataTypes.STRING,
@@ -29,5 +24,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull:false
     }
+  },{
+     timestamps: false
   } );
 };
