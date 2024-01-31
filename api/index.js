@@ -1,7 +1,7 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const PORT = 3001
-const { VideogamesToDb } = require('./src/services/videogamesToDb.js')
+const VideogamesToDb = require('./src/services/videogamesToDb.js')
 
 
 const startServer = async ()=>{

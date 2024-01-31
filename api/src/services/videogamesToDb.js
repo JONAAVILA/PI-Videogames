@@ -30,6 +30,4 @@ const VideogamesToDb = async ()=>{
 
 }
 
-module.exports = {
-    VideogamesToDb
-};
+module.exports = VideogamesToDb;
