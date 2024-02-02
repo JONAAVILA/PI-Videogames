@@ -2,6 +2,7 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const PORT = 3001
 const VideogamesToDb = require('./src/services/videogamesToDb.js')
+const genresToDb = require('./src/services/genresToDb.js');
 
 
 const startServer = async ()=>{
@@ -10,7 +11,8 @@ const startServer = async ()=>{
       console.log(`linsting in port ${PORT}`)
     });
     VideogamesToDb()
-  }
+    console.log( await genresToDb())
+}
 
 startServer();
 
