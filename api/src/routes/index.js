@@ -7,7 +7,7 @@ const getIdGames = require('./controllers/getIdGames');
 const router = Router();
 
 router.get('/videogames',getAllVideogames)
-router.get('/videogames/:id', getIdGames)
+router.get('/videogames/:idGame', getIdGames)
 
 module.exports = router;
 
