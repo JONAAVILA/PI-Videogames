@@ -7,7 +7,6 @@ const URL = 'https://api.rawg.io/api/games';
 const VideogamesToDb = async ()=>{
     try {
         const response = await axios(`${URL}?key=${APY_KEY}`)
-    
         if(!response.data ) throw new Error(response)
         
         const apiData = response.data.results?.map(async element => {

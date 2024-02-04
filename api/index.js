@@ -11,8 +11,9 @@ const startServer = async ()=>{
       console.log(`linsting in port ${PORT}`)
     });
     VideogamesToDb()
-    console.log( await genresToDb())
+    genresToDb()
 }
 
 startServer();
+
 
