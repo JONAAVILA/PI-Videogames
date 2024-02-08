@@ -1,13 +1,14 @@
-const getGameByName = require('./../handlers/gameByName');
+const gameByName = require('./../handlers/gameByName');
 
-const getGameByName = (req, res)=>{
+const getGameByName = async (req, res)=>{
     try {
-        const name = req.query
+        const { name } = req.query
+        const response = await gameByName(name)
 
-
+        return res.status(200).json(response)
     } catch (error) {
-        
+        return res.status(400).json({error:error.message})
     }
 }
 
-module.export = getGameByName;
+module.exports = getGameByName;
