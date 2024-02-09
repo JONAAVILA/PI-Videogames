@@ -11,21 +11,19 @@ const gameByName = async (name)=>{
             nameComplete += word[0].toUpperCase() + word.slice(1) + " "
          }
       
-        const correction = nameComplete.trim()
+        const correction = nameComplete.trim().toString()
         const gameApi = await axios(`${URL}key=${APY_KEY}&search=${correction}`)
-        console.log(gameApi)
-
+        
         if(!gameApi) {
-            const gameDb = await Videogame.findAll(correction)
-            if(!gameDb) throw new Error('Invalid name')
-            else return gameDb
-        }
-        return gameApi.data
+                const gameDb = await Videogame.findAll(correction)
+                if(!gameDb) throw new Error('Invalid name')
+                else return gameDb
+            }
+        return gameApi.data.results.slice(0,15)
 
     } catch (error) {
         return {error: error.message}
     }
-    
 }
 
 module.exports = gameByName;
