@@ -1,5 +1,6 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const genresToDb = require('./src/routes/services/genresToDb.js');
 const PORT = 3001;
 
 const startServer = async ()=>{
@@ -8,7 +9,7 @@ const startServer = async ()=>{
       console.log(`linsting in port ${PORT}`)
     });
 }
-
+genresToDb();
 startServer();
 
 
