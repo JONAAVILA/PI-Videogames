@@ -8,8 +8,8 @@ const startServer = async ()=>{
     server.listen(PORT,() => {
       console.log(`linsting in port ${PORT}`)
     });
+    await genresToDb();
 }
-genresToDb();
 startServer();
 
 

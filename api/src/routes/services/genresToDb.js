@@ -1,13 +1,12 @@
 const { Genres } = require('./../../db');
 const axios = require('axios');
-const URL = 'https://api.rawg.io/api/genres';
-const { APY_KEY }= process.env;
+const URL = 'https://api.rawg.io/api/genres?';
+const { API_KEY }= process.env;
 
 const genresToDb = async ()=>{
     try {
-        const response = await axios(`${URL}?key=${APY_KEY}`)
+        const response = await axios(`${URL}key=${API_KEY}`)
         if(!response) throw new Error('Genres not found')
-
         const reponseApi = response.data.results.map( async element => {
             await Genres.findOrCreate({
                 where:{
