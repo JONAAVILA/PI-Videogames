@@ -1,7 +1,7 @@
 const axios = require('axios');
 const URL = 'https://api.rawg.io/api/games?'
 const { Videogame } = require('./../../db');
-const { APY_KEY } = process.env;
+const { API_KEY } = process.env;
 
 const gameByName = async (name)=>{
     try {
@@ -12,7 +12,7 @@ const gameByName = async (name)=>{
          }
       
         const correction = nameComplete.trim().toString()
-        const gameApi = await axios(`${URL}key=${APY_KEY}&search=${correction}`)
+        const gameApi = await axios(`${URL}key=${API_KEY}&search=${correction}`)
         
         if(!gameApi) {
                 const gameDb = await Videogame.findAll(correction)
