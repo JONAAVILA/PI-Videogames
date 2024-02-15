@@ -1,4 +1,4 @@
-const gameByName = require('./../handlers/gameByName');
+const gameByName = require('../../handlers/handlerGet/gameByName');
 
 const getGameByName = async (req, res)=>{
     try {

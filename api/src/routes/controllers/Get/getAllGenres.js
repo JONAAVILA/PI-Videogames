@@ -1,4 +1,4 @@
-const allGenres = require('./../handlers/allGenres');
+const allGenres = require('../../handlers/handlerGet/allGenres');
 
 const getAllGenres = async (req, res)=>{
     try {

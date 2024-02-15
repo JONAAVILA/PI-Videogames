@@ -1,4 +1,4 @@
-const idVideogames = require('./../handlers/idVideogames')
+const idVideogames = require('../../handlers/handlerGet/idVideogames')
 
 const getIdGames = async (req, res)=>{
     try {

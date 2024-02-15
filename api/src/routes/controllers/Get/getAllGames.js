@@ -1,4 +1,4 @@
-const allVideoGames = require('../handlers/allVideogames');
+const allVideoGames = require('../../handlers/handlerGet/allVideogames');
 
 const getAllVideogames = async (req, res)=>{
     try {

@@ -1,4 +1,4 @@
-const { Genres } = require('./../../db');
+const { Genres } = require('../../../db');
 
 const allGenres = async ()=>{
     try {
