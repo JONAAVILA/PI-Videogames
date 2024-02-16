@@ -4,6 +4,7 @@ const getIdGames = require('./controllers/Get/getIdGames');
 const getGameByName = require('./controllers/Get/getGameByName');
 const getAllGenres = require('./controllers/Get/getAllGenres');
 const getAllGamesToDb = require('./controllers/Get/getAllGamesToDb');
+const CreateGame = require('./controllers/Post/postNewGame');
 
 const router = Router();
 
@@ -12,6 +13,8 @@ router.get('/videogames/db',getAllGamesToDb)
 router.get('/videogames/:idGame', getIdGames)
 router.get('/search', getGameByName)
 router.get('/genres', getAllGenres)
+
+router.post('/create', CreateGame)
 
 module.exports = router;
 
