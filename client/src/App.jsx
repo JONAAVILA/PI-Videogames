@@ -1,22 +1,32 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom'
 import { allVideogamesApi } from './redux/Actions';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import Landing from './views/Landing';
+import Nav from './components/Nav';
+import Home from './views/Home';
 
 function App() {
-  const state = useSelector(state => state.allGamesApi)
   const dispatch = useDispatch()
 
   useEffect(()=>{
     dispatch(allVideogamesApi())
-  },[])
-
-  console.log(state)
+  },[dispatch])
 
   return (
     <div className="App">
-      <h1>Henry Videogames</h1>
-      <button>Go home</button>
+        <Routes>
+          <Route path='/' element={<Landing/>} />
+          <Route path='/*' element={
+            <>
+             <Nav/>
+             <Routes>
+                <Route path='/home' element={<Home/>} />
+             </Routes>
+            </>
+          } />
+        </Routes>
     </div>
   );
 }
