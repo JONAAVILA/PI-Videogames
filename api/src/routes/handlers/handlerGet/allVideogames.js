@@ -1,9 +1,10 @@
+require('dotenv').config()
 const axios = require('axios');
-const {API_KEY} = process.env;
+const { API_KEY } = process.env;
 const URL = 'https://api.rawg.io/api/games?';
 
 const allVideoGames = async (page)=>{
-        const allGames = await axios(`${URL}key=f21ce25957aa4e27a1e916fa3ebb14cc&page=${page}`)
+        const allGames = await axios(`${URL}key=${API_KEY}&page=${page}`)
         return allGames.data.results
 }
 
