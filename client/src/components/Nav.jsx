@@ -1,9 +1,14 @@
+import { Link } from "react-router-dom";
 
 const Nav = ()=>{
     return(
         <div>
-            <button>Create</button>
-            <button>Home</button>
+            <Link to='/form' >
+                <button>Create</button>
+            </Link>
+            <Link to='/home' >
+                <button>Home</button>
+            </Link>
         </div>
     )
 }
